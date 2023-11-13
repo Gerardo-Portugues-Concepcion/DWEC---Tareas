@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" defer>
+            let resultado = confirm('Abrir ventana nueva?');
+            let ventana = null;
+            if(resultado){
+                console.log('Abriendo ventana.');
+                ventana=window.open("NuevaVentana.html","","toolbar=no,menubar=no,width=300,height=300,top=400,left=400");
+                
+                ventana.document.open();
+                ventana.document.writeln(`<p>URL: ${ventana.location.href}</p>`);
+                ventana.document.writeln(`<p>PROTOCOLO: ${ventana.location.protocol}</p>`);
+                ventana.document.writeln(`<p>Navegador: ${ventana.navigator.appName}</p>`);
+                ventana.document.writeln(`<p>Java habilitado? ${ventana.navigator.javaEnabled()}</p>`);
+
+                ventana.document.close();
+                
+                //ventana.document.body.innerHTML="<h3>Exemplo de ventá nova.</h3>"
+                //ventana.document.body.innerHTML = "<h3>Exemplo de ventá nova</h3>";
+            }
+
+            function accionBotones() {
+                document.getElementById("CerrarVentana").onclick = () =>{
+                cerrarVentana();
+            }
+
+            }
+
+            const cerrarVentana = () =>{
+                if(ventana!=null){
+                    ventana.close();
+                    console.log("Ventana cerrada");
+                    ventana=null;
+                }else{
+                    console.log("No hay ventana que cerrar.");
+                }
+
+            }
+
+    </script>
+</head>
+<body onload="accionBotones()">
+    <button id="CerrarVentana">Cerrar Ventana</button>
+    
+</body>
+</html>
