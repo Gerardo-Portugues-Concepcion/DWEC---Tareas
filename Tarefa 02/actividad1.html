@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 2 - DWEC</title>
+    <script src="./actividad1.MultiplicarHtml.js"></script>
+    <script src="./actividad1.FibonacciHtml.js"></script>
+    <script src="./actividad1.esprimoHTML.js"></script>
+    <script src="./actividad1.calculoEdad.js"></script>
+</head>
+<body>
+    <h1>Tabla de multiplicar</h1>
+    <form onsubmit="tablaMultiplicar()">
+        <label for="numero">Numero: </label><input type="number" id="numeroMultiplicar">
+        <input type="submit">
+    </form>
+    <div id="resultadoMultiplicar"></div>
+
+    <h1>Secuencia Fibonacci</h1>
+    <form onsubmit="secuenciaFibonacciHtml()">
+        <label for="numero">Numero: </label><input type="number" id="numeroFibonacci">
+        <input type="submit">
+    </form>
+    <div id="resultadoFibonacci"></div>
+
+    <h1>Numero Primo</h1>
+    <form onsubmit="esPrimoHtml()">
+        <label for="numero">Numero: </label><input type="number" id="numeroPrimo">
+        <input type="submit">
+    </form>
+    <div id="resultadoNumeroPrimo"></div>
+
+    <hr>
+    <h1>Edad</h1>
+    <button onclick="mesaxeIdadeIf()">Calculo Edad (if)</button>
+    <button onclick="mesaxeIdadeSwitch()">Calculo Edad (switch)</button>
+    <div id="resultadoIdade"></div>
+
+    <hr>
+    <h1>Cálculos desplazamientos bit a bit</h1>
+    <p>125 / 8 = 
+        <script type="text/javascript">
+            console.log(`125 / 8 = ${125/8}`);        
+            document.write(`${125>>3}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${125/8})`);
+        </script>
+    </p>
+    <p>40 x 4 = 
+        <script type="text/javascript">
+            console.log(`40 x 4 = ${40*4}`);
+            document.write(`${40<<2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${40*4})`);
+        </script>
+    </p>
+    <p>25 / 2 = 
+        <script type="text/javascript">
+            console.log(`25 / 2 = ${25/2}`);
+            document.write(`${25>>1}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${25/2})`);
+        </script>
+    </p>
+    <p>10 x 16  = 
+        <script type="text/javascript">
+            console.log(`10 x 16 = ${10*16}`);
+            document.write(`${10<<4}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${10*16})`);
+        </script>
+    </p>
+    
+
+</body>
+</html>
