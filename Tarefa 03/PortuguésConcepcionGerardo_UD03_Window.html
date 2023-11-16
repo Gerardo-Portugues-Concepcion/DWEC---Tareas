@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="text/javascript" defer>
-            let resultado = confirm('Abrir ventana nueva?');
+    <script type="text/javascript" defer>            
             let ventana = null;
-            if(resultado){
-                console.log('Abriendo ventana.');
-                ventana=window.open("NuevaVentana.html","","toolbar=no,menubar=no,width=300,height=300,top=400,left=400");
-                
-                ventana.document.open();
-                ventana.document.writeln(`<p>URL: ${ventana.location.href}</p>`);
-                ventana.document.writeln(`<p>PROTOCOLO: ${ventana.location.protocol}</p>`);
-                ventana.document.writeln(`<p>Navegador: ${ventana.navigator.appName}</p>`);
-                ventana.document.writeln(`<p>Java habilitado? ${ventana.navigator.javaEnabled()}</p>`);
 
-                ventana.document.close();
-                
-                //ventana.document.body.innerHTML="<h3>Exemplo de ventá nova.</h3>"
-                //ventana.document.body.innerHTML = "<h3>Exemplo de ventá nova</h3>";
-            }
-
-            function accionBotones() {
-                document.getElementById("CerrarVentana").onclick = () =>{
-                cerrarVentana();
-            }
+            const abrirVentana = () => {
+                if(ventana==null){
+                    let resultado = confirm('Abrir ventana nueva?');
+                    if(resultado){
+                        console.log('Abriendo ventana.');
+                        ventana=window.open("NuevaVentana.html","","toolbar=no,menubar=no,width=300,height=300,top=400,left=400,alwaysRaised");
+                        
+                        ventana.document.open();
+                        ventana.document.writeln(`<! DOCTYPE html>`);
+                        ventana.document.writeln(`<p>URL: ${ventana.location.href}</p>`);
+                        ventana.document.writeln(`<p>PROTOCOLO: ${ventana.location.protocol}</p>`);
+                        ventana.document.writeln(`<p>Navegador: ${ventana.navigator.userAgent}</p>`);
+                        ventana.document.writeln(`<p>Java habilitado? ${ventana.navigator.javaEnabled()}</p>`);
+                        ventana.document.close();
+                    }
+                }else{
+                    console.log("La ventana ya existe.");
+                    alert("La ventana ya existe.");
+                }
 
             }
 
@@ -37,14 +36,79 @@
                     ventana=null;
                 }else{
                     console.log("No hay ventana que cerrar.");
+                    alert("No se puede cerrar ventana.");
                 }
-
             }
+
+            const moverVentanaBy = () =>{
+                if(ventana!=null){
+                    let moverX=document.getElementById("moverH").value;
+                    let moverY=document.getElementById("moverV").value;                    
+                    console.log(`Desplazando ${moverX},${moverY}`);
+                    ventana.moveBy(moverX,moverY);                    
+                    ventana.focus();
+                }else{
+                    console.log("No hay ventana que mover.");
+                    alert("No se puede mover la ventana.");
+                }
+            }
+
+            const moverVentanaTo = () =>{
+                if(ventana!=null){
+                    let moverX=document.getElementById("moverH").value;
+                    let moverY=document.getElementById("moverV").value;                    
+                    console.log(`Moviendo a ${moverX},${moverY}`);
+                    ventana.moveTo(moverX,moverY);
+                }else{
+                    console.log("No hay ventana que mover.");
+                    alert("No se puede mover la ventana.");
+                }
+            }
+
+            const aumentarTamano = () =>{
+                if(ventana!=null){
+                    let tamanoX=document.getElementById("moverH").value;
+                    let tamanoY=document.getElementById("moverV").value;                    
+                    console.log(`Aumentando tamaño ${tamanoX},${tamanoY}`);
+                    ventana.resizeBy(tamanoX,tamanoY);
+                }else{
+                    console.log("No hay ventana que aumentar.");
+                    alert("No existe la ventana.");
+                }
+            }
+
+            const redimensionar = () =>{
+                if(ventana!=null){
+                    let tamanoX=document.getElementById("moverH").value;
+                    let tamanoY=document.getElementById("moverV").value;                    
+                    console.log(`redimensionando a ${tamanoX},${tamanoY}`);
+                    ventana.resizeTo(tamanoX,tamanoY);
+                }else{
+                    console.log("No hay ventana que redimensionar.");
+                    alert("No existe la ventana.");
+                }
+            }
+
+            //Abre la ventana al cargar la página
+            abrirVentana();
 
     </script>
 </head>
-<body onload="accionBotones()">
-    <button id="CerrarVentana">Cerrar Ventana</button>
-    
+<body>
+    <button id="CerrarVentana" onclick="cerrarVentana()">Cerrar Ventana</button>
+    <button id="AbrirVentana" onclick="abrirVentana()">Abrir Ventana</button>
+    <form>
+        <label for="Horizontal">Horizontal:</label>
+        <input type="number" name="Horizontal" id="moverH" value="50"/>
+        <label for="Vertical">Vertical:</label>
+        <input type="number" name="Vertical" id="moverV" value="50"/>
+        <br/>
+        <input type="button" onclick="moverVentanaBy()" value="MOVER (MoveBY)"/>
+        <input type="button" onclick="moverVentanaTo()" value="MOVER (MoveTo)"/>
+        <br/>
+        <input type="button" onclick="aumentarTamano()" value="AUMENTAR TAMAÑO"/>
+        <input type="button" onclick="redimensionar()" value="REDIMENSIONAR"/>
+        
+    </form>
 </body>
 </html>
