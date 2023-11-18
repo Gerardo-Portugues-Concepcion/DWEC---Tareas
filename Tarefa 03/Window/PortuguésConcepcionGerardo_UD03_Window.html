@@ -22,6 +22,7 @@
                         ventana.document.writeln(`<p>Java habilitado? ${ventana.navigator.javaEnabled()}</p>`);
                         ventana.document.close();
 
+                        //No parece funcionar 100% si primero no selecciono la ventana manualmente.
                         ventana.addEventListener('blur', e => {
                             ventana.focus();
                             console.log("Recuperando foco!");
