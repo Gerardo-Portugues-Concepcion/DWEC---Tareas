@@ -1,0 +1,6 @@
+{
+    //Cambiado para usar replaceAll()
+    "compilerOptions": {
+        "target": "ES2021"
+    }
+}

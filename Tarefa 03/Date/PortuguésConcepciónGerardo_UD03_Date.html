@@ -21,13 +21,9 @@
         <h2>Formátos fechas.</h2>
         <form>
             <select id="formatoFecha" name="formatoFecha">
-                <option value="DateString" selected>DateString</option>
-                <option value="ISOString">ISOString</option>
-                <option value="LocaleDateString">LocaleDateString</option>
-                <option value="LocaleString">LocaleString</option>
-                <option value="String">String</option>
-                <option value="UTCString">UTCString</option>
-                <option value="JSON">JSON</option>
+                <option value="FormatoA" selected>Formato DD/MM/YYYY</option>
+                <option value="FormatoB">Formato semana, DD de Mes de YYYY</option>
+                <option value="FormatoC">Formato semana, DD de Mes de YYYY en Inglés.</option>
             </select>
             <input type="button" onclick="muestraFechaFormato()" value="MOSTRAR"/>
         </form>
@@ -37,13 +33,8 @@
         <h2>Formátos horas.</h2>
         <form>
             <select id="formatoHora" name="formatoHora">
-                <option value="ISOString">ISOString</option>
-                <option value="LocaleString">LocaleString</option>
-                <option value="LocaleTimeString">LocaleTimeString</option>
-                <option value="String">String</option>
-                <option value="TimeString">TimeString</option>
-                <option value="UTCString">UTCString</option>
-                <option value="JSON">JSON</option>
+                <option value="FormatoA">Formato HH:MM:SS</option>
+                <option value="FormatoB">Formato HH:MM:SS AM/PM</option>
             </select>
             <input type="button" onclick="muestraHoraFormato()" value="MOSTRAR"/>
         </form>

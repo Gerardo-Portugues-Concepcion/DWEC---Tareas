@@ -60,29 +60,17 @@ const muestraFechaFormato:Function = ()=>{
     let htmlResultadoFormato: HTMLDivElement = document.querySelector("#resultadoFormatoFecha");
     if(htmlResultadoFormato){
         switch(htmlFormatoFecha.value){
-            case "DateString":
-                htmlResultadoFormato.innerHTML=fechaHoy.toDateString();
-                break;
-            case "ISOString":
-                htmlResultadoFormato.innerHTML=fechaHoy.toISOString();
-                break;
-            case "LocaleDateString":
+            case "FormatoA":
                 htmlResultadoFormato.innerHTML=fechaHoy.toLocaleDateString();
                 break;
-            case "LocaleString":
-                htmlResultadoFormato.innerHTML=fechaHoy.toLocaleString();
+            case "FormatoB":
+                htmlResultadoFormato.innerHTML=fechaHoy.toLocaleDateString("es-es",{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                 break;
-            case "String":
-                htmlResultadoFormato.innerHTML=fechaHoy.toString();
-                break;
-            case "UTCString":
-                htmlResultadoFormato.innerHTML=fechaHoy.toUTCString();
-                break;
-            case "JSON":
-                htmlResultadoFormato.innerHTML=fechaHoy.toJSON();
+            case "FormatoC":
+                htmlResultadoFormato.innerHTML=fechaHoy.toLocaleDateString("en-en",{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                 break;
             default:
-                htmlResultadoFormato.innerHTML="Sin formato";
+                htmlResultadoFormato.innerHTML="Sin formato conocido.";
                 break;
         }
     }
@@ -95,26 +83,11 @@ const muestraHoraFormato:Function = ()=>{
     let htmlResultadoFormatoHora: HTMLDivElement = document.querySelector("#resultadoFormatoHora");
     if(htmlResultadoFormatoHora){
         switch(htmlFormatoHora.value){
-            case "ISOString":
-                htmlResultadoFormatoHora.innerHTML=fechaHoy.toISOString();
-                break;
-            case "LocaleString":
-                htmlResultadoFormatoHora.innerHTML=fechaHoy.toLocaleString();
-                break;
-            case "LocaleTimeString":
+            case "FormatoA":
                 htmlResultadoFormatoHora.innerHTML=fechaHoy.toLocaleTimeString();
                 break;
-            case "String":
-                htmlResultadoFormatoHora.innerHTML=fechaHoy.toString();
-                break;
-            case "TimeString":
-                htmlResultadoFormatoHora.innerHTML=fechaHoy.toTimeString();
-                break;
-            case "UTCString":
-                htmlResultadoFormatoHora.innerHTML=fechaHoy.toUTCString();
-                break;
-            case "JSON":
-                htmlResultadoFormatoHora.innerHTML=fechaHoy.toJSON();
+            case "FormatoB":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toLocaleTimeString("en-US");
                 break;
             default:
                 htmlResultadoFormatoHora.innerHTML="Sin formato";
