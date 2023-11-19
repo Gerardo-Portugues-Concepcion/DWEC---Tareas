@@ -13,7 +13,7 @@
                     if(resultado){
                         console.log('Abriendo ventana.');
                         ventana=window.open("NuevaVentana.html","","toolbar=no,menubar=no,width=300,height=300,top=400,left=400,alwaysRaised");
-                        
+                        /*
                         ventana.document.open();
                         ventana.document.writeln(`<! DOCTYPE html>`);
                         ventana.document.writeln(`<p>URL: ${ventana.location.href}</p>`);
@@ -21,6 +21,7 @@
                         ventana.document.writeln(`<p>Navegador: ${ventana.navigator.userAgent}</p>`);
                         ventana.document.writeln(`<p>Java habilitado? ${ventana.navigator.javaEnabled()}</p>`);
                         ventana.document.close();
+                        */
 
                         //No parece funcionar 100% si primero no selecciono la ventana manualmente.
                         ventana.addEventListener('blur', e => {
