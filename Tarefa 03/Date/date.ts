@@ -54,7 +54,6 @@ const calculaAniversarios:Function = ()=>{
 }
 
 const muestraFechaFormato:Function = ()=>{
-    console.log(fechaHoy.toDateString());
     let htmlFormatoFecha:HTMLInputElement = document.querySelector("#formatoFecha");
     console.log(`Seleccionado formato ${htmlFormatoFecha.value}`);
 
@@ -73,14 +72,8 @@ const muestraFechaFormato:Function = ()=>{
             case "LocaleString":
                 htmlResultadoFormato.innerHTML=fechaHoy.toLocaleString();
                 break;
-            case "LocaleTimeString":
-                htmlResultadoFormato.innerHTML=fechaHoy.toLocaleTimeString();
-                break;
             case "String":
                 htmlResultadoFormato.innerHTML=fechaHoy.toString();
-                break;
-            case "TimeString":
-                htmlResultadoFormato.innerHTML=fechaHoy.toTimeString();
                 break;
             case "UTCString":
                 htmlResultadoFormato.innerHTML=fechaHoy.toUTCString();
@@ -93,7 +86,41 @@ const muestraFechaFormato:Function = ()=>{
                 break;
         }
     }
-    
+}
+
+const muestraHoraFormato:Function = ()=>{
+    let htmlFormatoHora:HTMLInputElement = document.querySelector("#formatoHora");
+    console.log(`Seleccionado formato ${htmlFormatoHora.value}`);
+
+    let htmlResultadoFormatoHora: HTMLDivElement = document.querySelector("#resultadoFormatoHora");
+    if(htmlResultadoFormatoHora){
+        switch(htmlFormatoHora.value){
+            case "ISOString":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toISOString();
+                break;
+            case "LocaleString":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toLocaleString();
+                break;
+            case "LocaleTimeString":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toLocaleTimeString();
+                break;
+            case "String":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toString();
+                break;
+            case "TimeString":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toTimeString();
+                break;
+            case "UTCString":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toUTCString();
+                break;
+            case "JSON":
+                htmlResultadoFormatoHora.innerHTML=fechaHoy.toJSON();
+                break;
+            default:
+                htmlResultadoFormatoHora.innerHTML="Sin formato";
+                break;
+        }
+    }
 }
 
 
