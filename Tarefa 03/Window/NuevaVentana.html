@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva ventana</title>
-</head>
-<body>
-    <h2 id="titulo">. . .</h2>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nueva ventana</title>
+        <script type="text/javascript" defer>
+            //Evento para mantener el foco (no siempre funciona).
+            window.addEventListener("blur", (e) => {
+                focus();
+                console.log("Intentando recuperar foco (puede ser ignorado.).");
+            });
+            //Evento para recibir mensajes de ventana principal
+            window.addEventListener("message",(event)=>{
+                switch(event.data.accion){
+                    case "moverBy":
+                        window.moveBy(event.data.posx,event.data.posy);
+                        break;
+                    case "moverTo":
+                        window.moveTo(event.data.posx,event.data.posy);
+                        break;
+                    case "tamanoBy":
+                        window.resizeBy(event.data.sizeX,event.data.sizeY);
+                        break;
+                    case "tamanoTo":
+                        window.resizeTo(event.data.sizeX,event.data.sizeY);
+                        break;
+                    default:
+                        console.log(`Mensaje desconocido:${event.data.accion}`);
+                        break;
+                }
+                },false);
+        </script>
+    </head>
+    <body>
+        <p>URL: <script>document.write(location.href);</script></p>
+        <p>PROTOCOLO: <script>document.write(location.protocol);</script></p>
+        <p>NAVEGADOR: <script>document.write(navigator.userAgent);</script></p>
+        <p>JAVA? <script>document.write(navigator.javaEnabled());</script></p>
+    </body>
 </html>

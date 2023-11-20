@@ -12,22 +12,7 @@
                     let resultado = confirm('Abrir ventana nueva?');
                     if(resultado){
                         console.log('Abriendo ventana.');
-                        ventana=window.open("NuevaVentana.html","","toolbar=no,menubar=no,width=300,height=300,top=400,left=400,alwaysRaised");
-                        
-                        ventana.document.open();
-                        ventana.document.writeln(`<! DOCTYPE html>`);
-                        ventana.document.writeln(`<p>URL: ${ventana.location.href}</p>`);
-                        ventana.document.writeln(`<p>PROTOCOLO: ${ventana.location.protocol}</p>`);
-                        ventana.document.writeln(`<p>Navegador: ${ventana.navigator.userAgent}</p>`);
-                        ventana.document.writeln(`<p>Java habilitado? ${ventana.navigator.javaEnabled()}</p>`);
-                        ventana.document.close();
-
-                        //No parece funcionar 100% si primero no selecciono la ventana manualmente.
-                        ventana.addEventListener('blur', e => {
-                            ventana.focus();
-                            console.log("Recuperando foco!");
-                        });
-
+                        ventana=window.open("NuevaVentana.html","Ventana","width=300,height=300,top=400,left=400,toolbar=no,menubar=no");
                         ventana.focus();
                     }
                 }else{
@@ -53,8 +38,8 @@
                     let moverX=document.getElementById("moverH").value;
                     let moverY=document.getElementById("moverV").value;                    
                     console.log(`Desplazando ${moverX},${moverY}`);
-                    ventana.moveBy(moverX,moverY);                    
-                    //ventana.focus();
+                    ventana.postMessage({accion:"moverBy",posx:moverX,posy:moverY},'*');
+                    //ventana.moveBy(moverX,moverY); //Cross Origin Error
                 }else{
                     console.log("No hay ventana que mover.");
                     alert("No se puede mover la ventana.");
@@ -66,8 +51,8 @@
                     let moverX=document.getElementById("moverH").value;
                     let moverY=document.getElementById("moverV").value;                    
                     console.log(`Moviendo a ${moverX},${moverY}`);
-                    ventana.moveTo(moverX,moverY);
-                    //ventana.focus();
+                    ventana.postMessage({accion:"moverTo",posx:moverX,posy:moverY},'*');
+                    // ventana.moveTo(moverX,moverY); //Cross Origin Error
                 }else{
                     console.log("No hay ventana que mover.");
                     alert("No se puede mover la ventana.");
@@ -77,10 +62,10 @@
             const aumentarTamano = () =>{
                 if(ventana!=null){
                     let tamanoX=document.getElementById("moverH").value;
-                    let tamanoY=document.getElementById("moverV").value;                    
+                    let tamanoY=document.getElementById("moverV").value;
                     console.log(`Aumentando tamaño ${tamanoX},${tamanoY}`);
-                    ventana.resizeBy(tamanoX,tamanoY);
-                    //ventana.focus();
+                    ventana.postMessage({accion:"tamanoBy",sizeX:tamanoX,sizeY:tamanoY},"*")
+                    //ventana.resizeBy(tamanoX,tamanoY); //Cross Origin Error
                 }else{
                     console.log("No hay ventana que aumentar.");
                     alert("No existe la ventana.");
@@ -92,8 +77,8 @@
                     let tamanoX=document.getElementById("moverH").value;
                     let tamanoY=document.getElementById("moverV").value;                    
                     console.log(`redimensionando a ${tamanoX},${tamanoY}`);
-                    ventana.resizeTo(tamanoX,tamanoY);
-                    //ventana.focus();
+                    ventana.postMessage({accion:"tamanoTo",sizeX:tamanoX,sizeY:tamanoY},"*")
+                    //ventana.resizeTo(tamanoX,tamanoY); //Cross Origin Error
                 }else{
                     console.log("No hay ventana que redimensionar.");
                     alert("No existe la ventana.");
@@ -117,7 +102,6 @@
         <br/>
         <input type="button" onclick="aumentarTamano()" value="AUMENTAR TAMAÑO"/>
         <input type="button" onclick="redimensionar()" value="REDIMENSIONAR"/>
-        
     </form>
 </body>
 </html>
