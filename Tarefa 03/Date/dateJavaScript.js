@@ -1,30 +1,31 @@
-let fechaHoy:Date = new Date();
-let fechaFinCurso:Date = new Date(2024,6,25,0,0,0,0);
 
-let resultadoFecha:String = `<p>ACTUAL: ${fechaHoy.toLocaleDateString()} ${fechaHoy.toLocaleTimeString()}</p>`;
+let fechaHoy = new Date();
+let fechaFinCurso = new Date(2024,6,25,0,0,0,0);
+
+let resultadoFecha = `<p>ACTUAL: ${fechaHoy.toLocaleDateString()} ${fechaHoy.toLocaleTimeString()}</p>`;
 resultadoFecha += `<p>FIN CURSO: ${fechaFinCurso.toLocaleDateString()} ${fechaFinCurso.toLocaleTimeString()}</p>`;
 
-let diferenciaMs:number=fechaFinCurso.getTime() - fechaHoy.getTime()
-let diferenciaDias:number = Math.floor(diferenciaMs/1000/60/60/24)+1;
+let diferenciaMs=fechaFinCurso.getTime() - fechaHoy.getTime()
+let diferenciaDias = Math.floor(diferenciaMs/1000/60/60/24)+1;
 
 resultadoFecha+=`<p><strong>Diferencia en días: ${diferenciaDias}</strong></p>`;
 
 //Resultados
 console.log(resultadoFecha);
-let htmlResultadoFecha:HTMLDivElement|null = document.querySelector("#resultadoFecha");
+let htmlResultadoFecha = document.getElementById("resultadoFecha");
 if(htmlResultadoFecha){
     htmlResultadoFecha.innerHTML+=resultadoFecha;
 }
 
-const calculaAniversarios:Function = ()=>{
-    let htmlControlFecha:HTMLInputElement = document.querySelector("#selectorFechaAniversario");
+const calculaAniversarios = ()=>{
+    let htmlControlFecha = document.getElementById("selectorFechaAniversario");
     if (htmlControlFecha.value!="") {
         console.log(htmlControlFecha.value);
-        let fechaAniversario:Date = new Date(htmlControlFecha.value);
+        let fechaAniversario = new Date(htmlControlFecha.value);
         console.log(fechaAniversario.toLocaleDateString());
-        let resultadoAniversarios:string = "";
-        for(let ano:number=new Date().getFullYear();ano<=2100;ano++){
-            let fechaAnivAno:Date = new Date(ano,fechaAniversario.getMonth(),fechaAniversario.getDate());            
+        let resultadoAniversarios = "";
+        for(let ano=new Date().getFullYear();ano<=2100;ano++){
+            let fechaAnivAno = new Date(ano,fechaAniversario.getMonth(),fechaAniversario.getDate());            
             switch(fechaAnivAno.getDay()){
                 case 6:
                     console.log(`El año ${ano} coincide en Sábado (${fechaAnivAno.toDateString()})`);
@@ -38,22 +39,21 @@ const calculaAniversarios:Function = ()=>{
                     break;
             }
         }
-        let htmlResultadoAniversarios:HTMLDivElement = document.querySelector("#resultadoAniversarios");
+        let htmlResultadoAniversarios = document.getElementById("resultadoAniversarios");
         if(htmlResultadoAniversarios){
             htmlResultadoAniversarios.innerHTML=resultadoAniversarios;
         }
     }
     else {
-        console.log("Es necesario seleccionar una fecha.");
         alert("Es necesario seleccionar una fecha.");
     }
 }
 
-const muestraFechaFormato:Function = ()=>{
-    let htmlFormatoFecha:HTMLInputElement = document.querySelector("#formatoFecha");
+const muestraFechaFormato = ()=>{
+    let htmlFormatoFecha = document.getElementById("formatoFecha");
     console.log(`Seleccionado formato ${htmlFormatoFecha.value}`);
 
-    let htmlResultadoFormato: HTMLDivElement = document.querySelector("#resultadoFormatoFecha");
+    let htmlResultadoFormato= document.querySelector("#resultadoFormatoFecha");
     if(htmlResultadoFormato){
         switch(htmlFormatoFecha.value){
             case "FormatoA":
@@ -72,11 +72,11 @@ const muestraFechaFormato:Function = ()=>{
     }
 }
 
-const muestraHoraFormato:Function = ()=>{
-    let htmlFormatoHora:HTMLInputElement = document.querySelector("#formatoHora");
+const muestraHoraFormato = ()=>{
+    let htmlFormatoHora = document.getElementById("formatoHora");
     console.log(`Seleccionado formato ${htmlFormatoHora.value}`);
 
-    let htmlResultadoFormatoHora: HTMLDivElement = document.querySelector("#resultadoFormatoHora");
+    let htmlResultadoFormatoHora = document.getElementById("resultadoFormatoHora");
     if(htmlResultadoFormatoHora){
         switch(htmlFormatoHora.value){
             case "FormatoA":
@@ -91,5 +91,3 @@ const muestraHoraFormato:Function = ()=>{
         }
     }
 }
-
-
