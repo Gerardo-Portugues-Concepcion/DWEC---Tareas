@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea04</title>
+    <!-- Versión TypeScript <script src="./TypeScript/TSArrayPaises.js" type="text/javascript" defer></script> -->
+    <script src="ArrayPaises.js" type="text/javascript" defer></script>
+    <script type="text/javascript">
+        //Función para mostrar resultados por defecto en página
+        function actualizaResultadosPagina(){
+            document.getElementById("res01").innerHTML=mostrarNumeroElementos(paises);
+            document.getElementById("res02").innerHTML=mostrarPaises(paises);
+            document.getElementById("res03").innerHTML=mostrarPaisesInverso(paises);
+        }
+        function addPaisInicio(){
+            pais= document.getElementById("pais").value;
+            anadirPaisComezo(paises, pais);
+            document.getElementById("res04").innerHTML=`Añadido ${pais} al principio`;
+            actualizaResultadosPagina();
+        }
+        function addPaisFinal(){
+            pais= document.getElementById("pais").value;
+            anadirPaisFinal(paises,pais);
+            document.getElementById("res04").innerHTML=`Añadido ${pais} al final.`;
+            actualizaResultadosPagina();
+        }
+        function delPaisInicio(){
+            document.getElementById("res06").innerHTML=`Eliminado al principio ${eliminarPaisComezo(paises)}`;
+            actualizaResultadosPagina();
+        }
+        function delPaisFinal(){
+            document.getElementById("res07").innerHTML=`Eliminado al final ${eliminarPaisFinal(paises)}`;
+            actualizaResultadosPagina();
+        }
+        function verPaisPosicion(){
+            posicion = document.getElementById("posicionPais").value;
+            document.getElementById("res08").innerHTML=`Pais posición ${posicion}: ${mostrarPaisID(paises,posicion)}`;
+        }
+        function verPosicion(){
+            pais = document.getElementById("pais").value;
+            document.getElementById("res09").innerHTML=`El país ${pais} ocupa la posición ${mostrarPosicionPais(paises,pais)}`;
+        }
+        function verRangoPosicion(){
+            pos1 = document.getElementById("posicionInicioPais").value;
+            pos2 = document.getElementById("posicionFinPais").value;
+            document.getElementById("res10").innerHTML=`Paises entre posición ${pos1} y ${pos2} = ${mostraPaisesEntre(paises,pos1,pos2)}`;
+            actualizaResultadosPagina();
+        }
+    </script>
+</head>
+<body onload="actualizaResultadosPagina()">
+    <header><h1>Tarea 04 - Arrays e Funcións</h1></header>
+    <main>
+        <dl>
+        <dt>Amosa o número de elementos do Array.</dt>
+            <dd id="res01"></dd>
+        <dt>Amosa todos os países.</dt>
+            <dd id="res02"></dd>
+        <dt>Amosa todos os países en sentido inverso. Ollo, que o Array orixinal non quede modificado, é dicir, que non quede ordenado ao revés.</dt>
+            <dd id="res03"></dd>
+        <dt>Engade un país ao comezo do Array.</li>     </dt>
+            <dd id="res04"></dd>
+        <dt>Engade un país ao final do Array.</dt>
+            <dd id="res05"></dd>
+        <dt>Elimina un elemento ao comezo do Array e indica cal foi.</dt>
+            <dd id="res06"></dd>
+        <dt>Elimina un elemento ao final do Array e indica cal foi.</dt>
+            <dd id="res07"></dd>
+        <dt>Amosa o elemento que se atope na posición que che indique o usuario.</dt>
+            <dd id="res08"></dd>
+        <dt>Amosa a posición na que se atopa un elemento indicado polo usuario.</dt>
+            <dd id="res09"></dd>
+        <dt>Amosa os elementos que se atopan entre dúas posicións indicadas polo usuario.</dt>
+            <dd id="res10"></dd>
+        </dl>
+
+        <input type="text" id="pais" name="pais" placeholder="País"/>
+        <button onclick="addPaisInicio()">Añadir al comienzo.</button>
+        <button onclick="addPaisFinal()">Añadir al final.</button>
+        <button onclick="verPosicion()">Ver posición.</button>
+        <br/>
+        <button onclick="delPaisInicio()">Borrar país inicio</button>
+        <button onclick="delPaisFinal()">Borrar país final</button>
+        <br/>
+        <input type="number" id="posicionPais" name="posicionPais" min="0" max="" placeholder="Posición"/>
+        <button onclick="verPaisPosicion()">Ver Pais</button>
+        <br/>
+        <input type="number" id="posicionInicioPais" name="posicionInicioPais" min="0" max="" placeholder="Posición Inicial"/>
+        <input type="number" id="posicionFinPais" name="posicionFinPais" min="0" max="" placeholder="Posición Final"/>
+        <button onclick="verRangoPosicion()">Ver rango Paises</button>
+    </main>
+    <footer></footer>
+    
+</body>
+</html>
