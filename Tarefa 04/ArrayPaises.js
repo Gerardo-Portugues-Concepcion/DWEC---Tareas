@@ -49,15 +49,24 @@ function mostrarPosicionPais(paises,pais){
     console.log(`${pais} está en la posición ${posicion}`);
 }
 
-function mostraPaisesEntre(pais, i1, i2){
+function mostraPaisesEntre(paises, i1, i2){
     if(i1>=0 && i2<paises.length){
         for(i=Math.min(i1,i2);i<=Math.max(i1,i2);i++){
-            console.log(`Pais ${i} = ${pais[i]}`);
+            console.log(`Pais ${i} = ${paises[i]}`);
         }    
     }else{
         console.log(`Índices fuera de rango (válidos 0-${paises.length-1})`);
     }
 }
+
+function mostraPaisesEntreAlternativa(paises, i1, i2){
+    if(i1>=0 && i1<paises.length && i2>=0 && i2<paises.length){
+        mostrarPaises(paises.slice(Math.min(i1,i2),Math.max(i1,i2)+1))
+    }else{
+        console.log(`Índices fuera de rango (válidos 0-${paises.length-1})`);
+    }
+}
+
 
 console.log("1.- Número de elementos");
 mostrarNumeroElementos(paises);
@@ -80,4 +89,5 @@ mostrarPaisID(paises,10);
 console.log("9.- Mostrar posición de elemento");
 mostrarPosicionPais(paises,"Spain");
 console.log("10.- Mostrar paises entre posicions");
-mostraPaisesEntre(paises,8,16);
+mostraPaisesEntre(paises,8,20);
+mostraPaisesEntreAlternativa(paises,8,20); //función alternativa con Splice
