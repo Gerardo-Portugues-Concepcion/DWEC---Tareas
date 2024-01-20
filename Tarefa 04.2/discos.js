@@ -10,7 +10,7 @@ class Disco{
     
     static discosTodos = new Array();
 
-    constructor(nombre='', grupo='', ano='',tipo='pop',prestado=false){   
+    constructor(nombre='', grupo='', ano='',tipo='',prestado=false){   
         if(TIPOSMUSICA.includes(tipo) && typeof(prestado)=='boolean'){
             this.nombre=nombre;
             this.grupo=grupo;
@@ -31,7 +31,7 @@ class Disco{
      * @param {Boolean} prestado 
      */
     setDatos(nombre=this.nombre, grupo=this.grupo, ano=this.ano,tipo=this.tipo,prestado=this.prestado){
-        if(TIPOMUSICA.includes(tipo) && typeof(prestado)=='boolean'){
+        if(TIPOSMUSICA.includes(tipo) && typeof(prestado)=='boolean'){
             this.nombre=nombre;
             this.grupo=grupo;
             this.ano=ano;
