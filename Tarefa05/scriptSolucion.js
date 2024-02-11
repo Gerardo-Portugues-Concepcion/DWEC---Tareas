@@ -17,14 +17,14 @@ function contadorCookiesLee (){
         }
     }
 
-    contadorCookiesMuestra(); //siempre que lee muestra el nuevo resultado
+    contadorCookiesMuestra(); //siempre que lee, muestra el nuevo resultado
 }
 
 function contadorCookiesActualiza (){
     contadorCookies++; //añade uno al contador.
     //Guarda contador nuevo como cookie
     let d=new Date();
-    d.setTime(d.getTime()+1000*60*5) //Expira en 5 minutos
+    d.setTime(d.getTime()+1000*60*10) //Expira en 10 minutos
     document.cookie = `contador=${contadorCookies}; expires=${d.toUTCString()};path=/;SameSite=none;secure`;
 
     contadorCookiesMuestra(); //siempre que actualiza muestra el nuevo resultado
@@ -221,9 +221,10 @@ function enviarFormulario(e){
     if(confirmacion!==null && confirmacion.match(regexConfirmarSi)){
         contadorCookiesActualiza(); //actualiza el contador de envios
         console.log('Formulario enviado.')
-    }        
-    console.log('Formulario no enviado.')
-    e.preventDefault();
+    }else{
+        console.log('Formulario no enviado.')
+        e.preventDefault();    
+    }
 }
 
 window.onload = ()=>{
