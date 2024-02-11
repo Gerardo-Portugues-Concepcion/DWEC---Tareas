@@ -34,7 +34,6 @@ function contadorCookiesMuestra (){
     document.getElementById("intentos").innerHTML=`Intentos envío:${contadorCookies}`;
 }
 
-
 //muestra mensajes error
 function muestraErrores(){
     let zonaErrores = document.getElementById('errores');
