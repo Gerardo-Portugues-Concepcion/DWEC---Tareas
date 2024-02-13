@@ -1,4 +1,4 @@
-let errores = {}; //Objeto para gestionar varios mensajes de error.
+let errores = []; //Array para gestionar varios mensajes de error.
 let contadorCookies = 1; //contador inicial cookies
 
 /**
