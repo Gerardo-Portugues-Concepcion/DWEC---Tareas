@@ -210,15 +210,7 @@ function validarHora(e){
 }
 
 function enviarFormulario(e){
-    const regexConfirmarSi = /^S$|^s$]|^SI$|^si$|^Si$/;
-    const regexConfirmarNo = /^N$|^n$]|^NO$|^no$|^No$/;
-
-    let confirmacion = '';
-    while(confirmacion!==null && !confirmacion.match(regexConfirmarSi) && !confirmacion.match(regexConfirmarNo) ){
-        confirmacion = prompt("Seguro que quiere enviar el formulario? [S/N]","S");
-    }
-
-    if(confirmacion!==null && confirmacion.match(regexConfirmarSi)){
+    if(confirm('Enviar formulario?')){
         contadorCookiesActualiza(); //actualiza el contador de envios
         console.log('Formulario enviado.')
     }else{
