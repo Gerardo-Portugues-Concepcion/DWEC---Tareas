@@ -81,3 +81,7 @@ h3 {
   background: white;
   border-radius: 7px;
 }
+
+input.error{
+  border: solid 1px red;
+}
