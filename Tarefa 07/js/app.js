@@ -86,8 +86,8 @@ function envioFormulario(e){
         //Envío datos
         xhrFormulario.send(`nombre=${nombre}&apellidos=${apellidos}&correo=${correo}&usuario=${usuario}&clave=${clave}&telefono=${telefono}`);
     }
-    //Evita acción predeterminada formulario (evito recargar página) por si no tuviese e.preventDefault() al inicio...;
-    return false;
+    
+    return false; //Evita acción predeterminada formulario (evito recargar página) por si no tuviese e.preventDefault() al inicio...;
 }
 
 function respuestaFormulario(e){
